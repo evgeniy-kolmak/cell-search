@@ -44,26 +44,40 @@ start.addEventListener('click', function (e) {
   const values = randomCell(10);
   console.log(values);
 
+  const data = [];
+
+  const isFinish = data => {
+    let count = 0;
+    if (data.length === 1) {
+      count = countTimer / 1000;
+      clearInterval(timerId)
+      timer.textContent = `Your times ${count} seconds`;
+
+    }
+  }
 
   column.forEach(el => {
     el.addEventListener('click', function () {
       if (values.includes(el.id)) {
         el.style.backgroundColor = '#66CC66';
-        countTimer += 10000;
+        if (!data.includes(el.id)) {
+          countTimer += 10000;
+          data.push(el.id);
+          isFinish(data)
+        }
       } else {
         el.style.backgroundColor = '#FF6666';
-
       }
     })
   })
+
   let interval = 1000;
   timerId = setInterval(() => {
     countTimer -= interval;
-    timer.textContent = `0 : ${countTimer / 1000
-      }`;
-    console.log(countTimer);
+    timer.textContent = `${countTimer / 1000
+      } seconds`;
     if (countTimer < interval) {
-      alert('Time is up');
+      timer.textContent = `Time is up`;
       clearInterval(timerId)
     }
   }, interval);
@@ -81,6 +95,7 @@ reset.addEventListener('click', function (e) {
   })
   clearInterval(timerId)
   countTimer = 40000;
+  timer.textContent = 'Time';
 })
 
 

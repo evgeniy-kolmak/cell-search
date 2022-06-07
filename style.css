@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+table {
+  width: 400px;
+  height: 400px;
+  border: 5px solid #000;
+  margin-bottom: 20px;
+  background-color: #000;
+  transition: all 1s ease 0s;
+}
+
+td {
+  border: 1px solid #000;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: all .3s ease 0s;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+
+}
+
+td:hover {
+  background-color: #cccc;
+  transition: all .3s ease 0s;
+}
+
+.wrapper-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 400px;
+}
+
+.btn {
+  width: 170px;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 30px;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #385898;
+  background-color: #e7f3ff;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+}
+
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 2px #666;
+}
+
+.btn:hover {
+  background-color: #DBE7F2;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.timer {
+  line-height: 40px;
+  font-size: 17px;
+  font-weight: 600;
+  font-size: 36px;
+  padding: 30px 0;
+}

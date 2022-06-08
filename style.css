@@ -1,3 +1,10 @@
+body {
+  background: #ECE9E6;
+  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+  font-family: 'Roboto slab', sans-serif;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -11,6 +18,8 @@ table {
   margin-bottom: 20px;
   background-color: #000;
   transition: all 1s ease 0s;
+  background: #000000fa;
+
 }
 
 td {
@@ -39,6 +48,7 @@ td:hover {
 }
 
 .btn {
+  font-family: 'Roboto slab', sans-serif;
   width: 170px;
   display: inline-block;
   box-sizing: border-box;
@@ -52,11 +62,12 @@ td:hover {
   font-weight: 600;
   text-decoration: none;
   color: #385898;
-  background-color: #e7f3ff;
+  background-color: #d3e5f8;
   cursor: pointer;
   user-select: none;
   appearance: none;
   touch-action: manipulation;
+
 }
 
 
@@ -101,9 +112,6 @@ td:hover {
   position: relative;
 }
 
-.modal--visible {
-  display: block;
-}
 
 .modal-content {
   border: 2px solid #2a2929;

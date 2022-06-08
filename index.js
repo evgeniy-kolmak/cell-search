@@ -12,7 +12,6 @@ let countTimer = 60000;
 let timerId;
 
 
-
 start.addEventListener('click', function (e) {
   e.preventDefault();
   table.style.backgroundColor = "#fff"
@@ -118,5 +117,7 @@ reset.forEach(btn => {
     clearInterval(timerId)
     countTimer = 60000;
     modal.style.display = 'none';
+    timer.textContent = 'Найди все 10 плиток'
+
   })
 })

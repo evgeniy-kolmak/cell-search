@@ -93,13 +93,16 @@ td:hover {
   font-size: 17px;
   font-weight: 600;
   font-size: 36px;
-  padding: 30px 0;
+  padding: 30px 0 15px 0;
+
+
 }
 
 .add-time {
   opacity: 0;
   transition: all .6s ease 0s;
   font-size: 20px;
+  margin-bottom: 15px;
 }
 
 
@@ -114,7 +117,6 @@ td:hover {
 
 
 .modal-content {
-  border: 2px solid #2a2929;
   padding: 35px;
   display: flex;
   align-items: center;
@@ -125,7 +127,9 @@ td:hover {
   top: 0;
   left: 0;
   z-index: 1;
-  background: #2A2A2A;
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #414345, #232526);
+  background: linear-gradient(to right, #414345, #232526);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.47);
   width: 400px;
   height: 250px;
@@ -147,4 +151,16 @@ td:hover {
 .content {
   color: #fff;
   font-size: 25px;
+}
+
+.content-promo {
+  width: 100px;
+}
+
+.time {
+  display: none;
+}
+
+.cup {
+  display: none;
 }

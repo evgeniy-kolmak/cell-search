@@ -56,8 +56,9 @@ start.addEventListener('click', function (e) {
       count = countTimer / interval;
       clearInterval(timerId)
       modal.style.display = 'block'
-      timer.textContent = 'You Win!'
-      content.textContent = `Your times ${count} seconds`;
+      timer.textContent = 'Вы победили!'
+      content.textContent = `Ваше время ${count} секунд(ы)`;
+      document.querySelector('.cup').style.display = 'block';
 
     }
   }
@@ -68,8 +69,9 @@ start.addEventListener('click', function (e) {
         el.style.backgroundColor = '#66CC66';
         if (!data.includes(el.id)) {
           addTime.style.opacity = 1;
+          addTime.style.color = '#66CC66';
+          addTime.textContent = '+ 10 sсекунд'
           setTimeout(() => {
-            addTime.textContent = '+ 10 seconds'
             addTime.style.opacity = 0;
           }, 1000)
           countTimer += 10000;
@@ -79,8 +81,9 @@ start.addEventListener('click', function (e) {
       } else {
         el.style.backgroundColor = '#FF6666';
         addTime.style.opacity = 1;
+        addTime.style.color = '#FF6666';
+        addTime.textContent = '- 1 секунда'
         setTimeout(() => {
-          addTime.textContent = '- 1 second'
           addTime.style.opacity = 0;
           countTimer -= 1000;
         }, 500)
@@ -92,10 +95,11 @@ start.addEventListener('click', function (e) {
   timerId = setInterval(() => {
     countTimer -= interval;
     timer.textContent = `${countTimer / interval
-      } seconds`;
+      } секунд`;
     if (countTimer < interval) {
       modal.style.display = 'block'
-      content.textContent = `Time is up`;
+      content.textContent = `Увы, время вышло!`;
+      document.querySelector('.time').style.display = 'block';
       clearInterval(timerId)
     }
   }, interval);
@@ -117,7 +121,7 @@ reset.forEach(btn => {
     clearInterval(timerId)
     countTimer = 60000;
     modal.style.display = 'none';
-    timer.textContent = 'Найди все 10 плиток'
+    timer.textContent = 'Найдите все 10 плиток'
 
   })
 })

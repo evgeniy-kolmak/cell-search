@@ -105,6 +105,11 @@ td:hover {
   margin-bottom: 15px;
 }
 
+.record {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
 
 .active {
   display: block;

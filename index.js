@@ -7,9 +7,14 @@ const reset = document.querySelectorAll('.reset');
 const timer = document.querySelector('.timer');
 const content = document.querySelector('.content');
 const addTime = document.querySelector('.add-time');
+const record = document.querySelector('.record');
 const modal = document.querySelector('.modal');
 let countTimer = 60000;
 let timerId;
+let countRecord = localStorage.timeCount;
+record.textContent = `Ваш рекорд ${countRecord} секунд(ы)`;
+
+
 
 
 start.addEventListener('click', function (e) {
@@ -25,6 +30,7 @@ start.addEventListener('click', function (e) {
   }
 
   addIdElements();
+
 
   const randomCell = count => {
     const result = [];
@@ -44,6 +50,8 @@ start.addEventListener('click', function (e) {
 
     return result
   }
+
+
   const countCell = 10;
   const values = randomCell(countCell);
   console.log(values);
@@ -57,10 +65,21 @@ start.addEventListener('click', function (e) {
       clearInterval(timerId)
       modal.style.display = 'block'
       timer.textContent = 'Вы победили!'
+      isRecord(count);
       content.textContent = `Ваше время ${count} секунд(ы)`;
       document.querySelector('.cup').style.display = 'block';
 
     }
+  }
+
+  const isRecord = count => {
+    if (count > countRecord) {
+      countRecord = count;
+      localStorage.timeCount = countRecord;
+    }
+
+    record.textContent = `Ваш рекорд ${countRecord} секунд(ы)`;
+
   }
 
   column.forEach(el => {
@@ -125,3 +144,5 @@ reset.forEach(btn => {
 
   })
 })
+
+

@@ -3,11 +3,15 @@ const row = document.querySelectorAll('tr');
 const columnInRow = Array.from(row).map(el => Array.from(el.children));
 const column = document.querySelectorAll('td');
 const start = document.querySelector('.start');
-const reset = document.querySelector('.reset');
+const reset = document.querySelectorAll('.reset');
 const timer = document.querySelector('.timer');
+const content = document.querySelector('.content');
 const addTime = document.querySelector('.add-time');
-let countTimer = 40000;
+const modal = document.querySelector('.modal');
+let countTimer = 60000;
 let timerId;
+
+
 
 start.addEventListener('click', function (e) {
   e.preventDefault();
@@ -52,7 +56,9 @@ start.addEventListener('click', function (e) {
     if (data.length === countCell) {
       count = countTimer / interval;
       clearInterval(timerId)
-      timer.textContent = `Your times ${count} seconds`;
+      modal.style.display = 'block'
+      timer.textContent = 'You Win!'
+      content.textContent = `Your times ${count} seconds`;
 
     }
   }
@@ -63,9 +69,8 @@ start.addEventListener('click', function (e) {
         el.style.backgroundColor = '#66CC66';
         if (!data.includes(el.id)) {
           addTime.style.opacity = 1;
-          // addTime.style.marginTop = '-20px';
           setTimeout(() => {
-            // addTime.style.marginTop = '20px';
+            addTime.textContent = '+ 10 seconds'
             addTime.style.opacity = 0;
           }, 1000)
           countTimer += 10000;
@@ -74,6 +79,12 @@ start.addEventListener('click', function (e) {
         }
       } else {
         el.style.backgroundColor = '#FF6666';
+        addTime.style.opacity = 1;
+        setTimeout(() => {
+          addTime.textContent = '- 1 second'
+          addTime.style.opacity = 0;
+          countTimer -= 1000;
+        }, 500)
       }
     })
   })
@@ -84,30 +95,28 @@ start.addEventListener('click', function (e) {
     timer.textContent = `${countTimer / interval
       } seconds`;
     if (countTimer < interval) {
-      timer.textContent = `Time is up`;
+      modal.style.display = 'block'
+      content.textContent = `Time is up`;
       clearInterval(timerId)
     }
   }, interval);
 
 })
 
-reset.addEventListener('click', function (e) {
-  e.preventDefault();
-  clearInterval(timerId)
-  table.style.backgroundColor = '#000';
-  column.forEach(el => {
-    el.style.backgroundColor = null;
-    el.style.transitionDuration = '.5s';
-    el.addEventListener('click', function () {
+reset.forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    clearInterval(timerId)
+    table.style.backgroundColor = '#000';
+    column.forEach(el => {
       el.style.backgroundColor = null;
+      el.style.transitionDuration = '.5s';
+      el.addEventListener('click', function () {
+        el.style.backgroundColor = null;
+      })
     })
+    clearInterval(timerId)
+    countTimer = 60000;
+    modal.style.display = 'none';
   })
-  clearInterval(timerId)
-  countTimer = 40000;
-  timer.textContent = 'Time';
-
-
 })
-
-
-

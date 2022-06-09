@@ -11,11 +11,8 @@ const record = document.querySelector('.record');
 const modal = document.querySelector('.modal');
 let countTimer = 60000;
 let timerId;
-let countRecord = localStorage.timeCount;
-record.textContent = `Ваш рекорд ${countRecord} секунд(ы)`;
-
-
-
+localStorage.timeCount = 0;
+record.textContent = `Ваш рекорд ${localStorage.timeCount} секунд(ы)`;
 
 start.addEventListener('click', function (e) {
   e.preventDefault();
@@ -73,12 +70,11 @@ start.addEventListener('click', function (e) {
   }
 
   const isRecord = count => {
-    if (count > countRecord) {
-      countRecord = count;
-      localStorage.timeCount = countRecord;
+    if (count > localStorage.timeCount) {
+      localStorage.timeCount = count;
     }
 
-    record.textContent = `Ваш рекорд ${countRecord} секунд(ы)`;
+    record.textContent = `Ваш рекорд ${localStorage.timeCount} секунд(ы)`;
 
   }
 
@@ -122,6 +118,9 @@ start.addEventListener('click', function (e) {
       clearInterval(timerId)
     }
   }, interval);
+
+
+  document.querySelectorAll('.content-promo').forEach(item => item.style.display = 'none')
 
 })
 

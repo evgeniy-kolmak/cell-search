@@ -23,6 +23,8 @@ table {
 }
 
 td {
+  width: 35px;
+  height: 35px;
   border: 1px solid #000;
   margin: 0;
   padding: 0;
@@ -168,4 +170,11 @@ td:hover {
 
 .cup {
   display: none;
+}
+
+
+.bonus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

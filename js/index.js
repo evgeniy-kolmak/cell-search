@@ -11,6 +11,7 @@ const record = document.querySelector('.record');
 const modal = document.querySelector('.modal');
 let countTimer = 60000;
 let timerId;
+const bonus = ['star', 'bomb', 'luck'];
 
 const addIdElements = () => {
   Array.from(row).map((element, index) => element.id = index)
@@ -35,7 +36,6 @@ start.addEventListener('click', function (e) {
   table.style.backgroundColor = "#fff"
   table.style.transitionDuration = '1s'
 
-
   const randomCell = count => {
     const result = [];
     for (let i = 0; i < count; i++) {
@@ -55,9 +55,10 @@ start.addEventListener('click', function (e) {
     return result
   }
 
+
   const countCell = 10;
   const values = randomCell(countCell);
-  console.log(values);
+  // console.log(values);
 
   const data = [];
 
@@ -74,6 +75,62 @@ start.addEventListener('click', function (e) {
 
     }
   }
+
+  const bonusValues = [];
+
+  const addBonus = (coll) => {
+    const collectionCount = coll.map(item => (countBonus(item)));
+    const sumCountBonus = collectionCount.reduce((acc, item) => acc += item, 0)
+    for (let i = 0; i < sumCountBonus; i++) {
+      const value = Math.round(Math.random() * 100).toString();
+      if (values.includes(value) || bonusValues.includes(value)) {
+        i--;
+        continue;
+      } else if (!values.includes(value)) {
+        if (value.length > 2) {
+          bonusValues.push('00')
+        } else if (value.length < 2) {
+          bonusValues.push(`0${value}`)
+        } else {
+          bonusValues.push(value)
+        }
+      }
+    }
+    return collectionCount;
+
+  }
+
+  const countBonusValues = addBonus(bonus);
+  console.log(bonusValues);
+  console.log(countBonusValues);
+
+
+  const star = [];
+
+  for (let i = 0; i < countBonusValues[0]; i++) {
+    star.push(bonusValues[i])
+  }
+
+  const bomb = [];
+
+  for (let i = countBonusValues[0]; i < bonusValues.length - 1; i++) {
+    bomb.push(bonusValues[i])
+  }
+
+  const luck = bonusValues.slice(-1)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const isRecord = count => {
     if (count > localStorage.timeCount) {
@@ -151,4 +208,16 @@ reset.forEach(btn => {
   })
 })
 
+
+
+
+const countBonus = value => {
+  if (value === 'star') {
+    return Math.round(Math.random() * 5);
+  } else if (value === 'bomb') {
+    return Math.round(Math.random() * 3);
+  } else {
+    return 1;
+  }
+}
 

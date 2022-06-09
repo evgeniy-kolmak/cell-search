@@ -11,8 +11,16 @@ const record = document.querySelector('.record');
 const modal = document.querySelector('.modal');
 let countTimer = 60000;
 let timerId;
-localStorage.timeCount = 0;
-record.textContent = `Ваш рекорд ${localStorage.timeCount} секунд(ы)`;
+
+const showRecord = () => {
+  if (localStorage.timeCount === undefined) {
+    localStorage.timeCount = 0;
+  }
+  record.textContent = `Ваш рекорд ${localStorage.timeCount} секунд(ы)`;
+}
+
+showRecord();
+
 
 start.addEventListener('click', function (e) {
   e.preventDefault();
@@ -27,7 +35,6 @@ start.addEventListener('click', function (e) {
   }
 
   addIdElements();
-
 
   const randomCell = count => {
     const result = [];
@@ -47,7 +54,6 @@ start.addEventListener('click', function (e) {
 
     return result
   }
-
 
   const countCell = 10;
   const values = randomCell(countCell);

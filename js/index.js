@@ -12,6 +12,15 @@ const modal = document.querySelector('.modal');
 let countTimer = 60000;
 let timerId;
 
+const addIdElements = () => {
+  Array.from(row).map((element, index) => element.id = index)
+  columnInRow.map((items, i) => {
+    items.map((item, index) => item.id = `${i}${index}`)
+  })
+}
+
+addIdElements();
+
 const showRecord = () => {
   if (localStorage.timeCount === undefined) {
     localStorage.timeCount = 0;
@@ -21,20 +30,11 @@ const showRecord = () => {
 
 showRecord();
 
-
 start.addEventListener('click', function (e) {
   e.preventDefault();
   table.style.backgroundColor = "#fff"
   table.style.transitionDuration = '1s'
 
-  const addIdElements = () => {
-    Array.from(row).map((element, index) => element.id = index)
-    columnInRow.map((items, i) => {
-      items.map((item, index) => item.id = `${i}${index}`)
-    })
-  }
-
-  addIdElements();
 
   const randomCell = count => {
     const result = [];
@@ -142,6 +142,7 @@ reset.forEach(btn => {
         el.style.backgroundColor = null;
       })
     })
+
     clearInterval(timerId)
     countTimer = 60000;
     modal.style.display = 'none';

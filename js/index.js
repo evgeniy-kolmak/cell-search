@@ -123,9 +123,9 @@ start.addEventListener('click', function (e) {
 
 
 
+  // вставлять элементы сразу в html при кнопке старт, а не при нажатии и рикпываит классом
 
-
-
+  // Дубли создания бонусов
 
 
 
@@ -148,7 +148,7 @@ start.addEventListener('click', function (e) {
         if (!data.includes(el.id)) {
           addTime.style.opacity = 1;
           addTime.style.color = '#66CC66';
-          addTime.textContent = '+ 10 sсекунд'
+          addTime.textContent = '+ 10 секунд'
           setTimeout(() => {
             addTime.style.opacity = 0;
           }, 1000)
@@ -157,14 +157,67 @@ start.addEventListener('click', function (e) {
           isFinish(data)
         }
       } else {
-        el.style.backgroundColor = '#FF6666';
-        addTime.style.opacity = 1;
-        addTime.style.color = '#FF6666';
-        addTime.textContent = '- 1 секунда'
-        setTimeout(() => {
-          addTime.style.opacity = 0;
-          countTimer -= 1000;
-        }, 500)
+        if (!data.includes(el.id)) {
+          if (star.includes(el.id)) {
+            console.log(0);
+            el.style.backgroundColor = '#7c2222';
+            const img = document.createElement('img');
+            img.style.width = '32px';
+            img.src = './img/star.png';
+            const td = document.getElementById(`${el.id}`);
+            td.classList.add('bonus');
+            td.append(img)
+            // 
+            addTime.style.opacity = 1;
+            addTime.style.color = '#7c2222';
+            addTime.textContent = '+ 7 секунд'
+            setTimeout(() => {
+              addTime.style.opacity = 0;
+            }, 1500)
+            countTimer += 7000;
+
+          } else if (bomb.includes(el.id)) {
+            el.style.backgroundColor = 'orange';
+            const img = document.createElement('img');
+            img.style.width = '32px';
+            img.src = './img/bomb.png';
+            const td = document.getElementById(`${el.id}`);
+            td.classList.add('bonus');
+            td.append(img)
+            // 
+            addTime.style.opacity = 1;
+            addTime.style.color = 'orange';
+            addTime.textContent = 'Упс! - 3 секунды'
+            setTimeout(() => {
+              addTime.style.opacity = 0;
+            }, 1500)
+            countTimer -= 3000;
+          } else if (luck.includes(el.id)) {
+            el.style.backgroundColor = 'purple';
+            const img = document.createElement('img');
+            img.style.width = '32px';
+            img.src = './img/luck.png';
+            const td = document.getElementById(`${el.id}`);
+            td.classList.add('bonus');
+            td.append(img)
+            // 
+            addTime.style.opacity = 1;
+            addTime.style.color = 'purple';
+            addTime.textContent = 'Ого! Это большая удача'
+            setTimeout(() => {
+              addTime.style.opacity = 0;
+            }, 1500)
+          } else {
+            el.style.backgroundColor = '#FF6666';
+            addTime.style.opacity = 1;
+            addTime.style.color = '#FF6666';
+            addTime.textContent = '- 1 секунда'
+            setTimeout(() => {
+              addTime.style.opacity = 0;
+              countTimer -= 1000;
+            }, 500)
+          }
+        }
       }
     })
   })
@@ -193,6 +246,7 @@ reset.forEach(btn => {
     clearInterval(timerId)
     table.style.backgroundColor = '#000';
     column.forEach(el => {
+      el.innerHTML = '';
       el.style.backgroundColor = null;
       el.style.transitionDuration = '.5s';
       el.addEventListener('click', function () {
@@ -215,7 +269,7 @@ const countBonus = value => {
   if (value === 'star') {
     return Math.round(Math.random() * 5);
   } else if (value === 'bomb') {
-    return Math.round(Math.random() * 3);
+    return Math.round(Math.random() * 4);
   } else {
     return 1;
   }

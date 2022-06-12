@@ -5,6 +5,10 @@ body {
   font-family: 'Roboto slab', sans-serif;
 }
 
+img {
+  width: 100%;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -34,6 +38,7 @@ td {
   font-size: 18px;
   font-weight: 600;
   color: #fff;
+
 
 }
 
@@ -85,10 +90,6 @@ td:hover {
   transform: scale(0.96);
 }
 
-.btn:disabled {
-  pointer-events: none;
-  opacity: 0.65;
-}
 
 .timer {
   line-height: 40px;
@@ -170,12 +171,4 @@ td:hover {
 
 .cup {
   display: none;
-}
-
-
-.bonus {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
 }

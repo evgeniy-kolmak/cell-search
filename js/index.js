@@ -9,10 +9,12 @@ const content = document.querySelector('.content');
 const addTime = document.querySelector('.add-time');
 const record = document.querySelector('.record');
 const timer = document.querySelector('.timer');
+const info = document.querySelector('.img-info');
 let values;
 let doneValues;
 let logs;
 let timerId;
+let countBonusValues;
 let countTimer = 60000;
 const interval = 1000;
 const bonus = ['star', 'bomb', 'luck', 'skull'];
@@ -127,6 +129,77 @@ const addBonus = coll => {
   }
   return collectionCount;
 
+}
+
+// Добовление бонусов на поле
+const addSuperBonus = () => {
+  let count;
+
+  if (countBonusValues[countBonusValues.length - 1] === 0) {
+    luck = bonusValues.slice(-1);
+    count = 1;
+
+  } else {
+    luck = [bonusValues[bonusValues.length - 2]];
+    skull = bonusValues.slice(-1);
+    count = 2;
+
+    skull.forEach(el => {
+      const element = document.getElementById(`${el}`);
+      const img = document.createElement('img');
+      img.style.verticalAlign = 'bottom'
+      img.style.opacity = 0;
+      img.style.width = '32px';
+      img.style.height = '32px';
+      img.src = './img/skull.png';
+      element.append(img)
+
+    })
+
+  }
+
+  for (let i = countBonusValues[0]; i < bonusValues.length - count; i++) {
+    bomb.push(bonusValues[i])
+  }
+
+  for (let i = 0; i < countBonusValues[0]; i++) {
+    star.push(bonusValues[i])
+  }
+
+
+  star.forEach(el => {
+    const element = document.getElementById(`${el}`);
+    const img = document.createElement('img');
+    img.style.verticalAlign = 'bottom';
+    img.style.opacity = 0;
+    img.style.width = '32px';
+    img.style.height = '32px';
+    img.src = './img/star.png';
+    element.append(img)
+  })
+
+  bomb.forEach(el => {
+    const element = document.getElementById(`${el}`);
+    const img = document.createElement('img');
+    img.style.verticalAlign = 'bottom';
+    img.style.opacity = 0;
+    img.style.width = '32px';
+    img.style.height = '32px';
+    img.src = './img/bomb.png';
+    element.append(img);
+  })
+
+  luck.forEach(el => {
+    const element = document.getElementById(`${el}`);
+    const img = document.createElement('img');
+    img.style.verticalAlign = 'bottom'
+    img.style.opacity = 0;
+    img.style.width = '32px';
+    img.style.height = '32px';
+    img.src = './img/luck.png';
+    element.append(img)
+
+  })
 }
 
 
@@ -248,7 +321,7 @@ start.addEventListener('click', function (e) {
   statusGame = true;
   startGame(statusGame);
   e.preventDefault();
-  statusGame = true;
+
   table.style.backgroundColor = '#fff'
   table.style.transitionDuration = '1s'
 
@@ -257,7 +330,7 @@ start.addEventListener('click', function (e) {
   doneValues = [];
   logs = [];
 
-  const countBonusValues = addBonus(bonus);
+  countBonusValues = addBonus(bonus);
 
 
   timerId = setInterval(() => {
@@ -272,79 +345,9 @@ start.addEventListener('click', function (e) {
     }
   }, interval);
 
-
   star = [];
   bomb = [];
-  // Добовление бонусов на поле
-  const addSuperBonus = () => {
-    let count;
 
-    if (countBonusValues[countBonusValues.length - 1] === 0) {
-      luck = bonusValues.slice(-1);
-      count = 1;
-
-    } else {
-      luck = [bonusValues[bonusValues.length - 2]];
-      skull = bonusValues.slice(-1);
-      count = 2;
-
-      skull.forEach(el => {
-        const element = document.getElementById(`${el}`);
-        const img = document.createElement('img');
-        img.style.verticalAlign = 'bottom'
-        img.style.opacity = 0;
-        img.style.width = '32px';
-        img.style.height = '32px';
-        img.src = './img/skull.png';
-        element.append(img)
-
-      })
-
-    }
-
-    for (let i = countBonusValues[0]; i < bonusValues.length - count; i++) {
-      bomb.push(bonusValues[i])
-    }
-
-    for (let i = 0; i < countBonusValues[0]; i++) {
-      star.push(bonusValues[i])
-    }
-
-
-    star.forEach(el => {
-      const element = document.getElementById(`${el}`);
-      const img = document.createElement('img');
-      img.style.verticalAlign = 'bottom';
-      img.style.opacity = 0;
-      img.style.width = '32px';
-      img.style.height = '32px';
-      img.src = './img/star.png';
-      element.append(img)
-    })
-
-    bomb.forEach(el => {
-      const element = document.getElementById(`${el}`);
-      const img = document.createElement('img');
-      img.style.verticalAlign = 'bottom';
-      img.style.opacity = 0;
-      img.style.width = '32px';
-      img.style.height = '32px';
-      img.src = './img/bomb.png';
-      element.append(img);
-    })
-
-    luck.forEach(el => {
-      const element = document.getElementById(`${el}`);
-      const img = document.createElement('img');
-      img.style.verticalAlign = 'bottom'
-      img.style.opacity = 0;
-      img.style.width = '32px';
-      img.style.height = '32px';
-      img.src = './img/luck.png';
-      element.append(img)
-
-    })
-  }
   addSuperBonus();
 
   document.querySelectorAll('.content-promo').forEach(item => item.style.display = 'none')
@@ -379,4 +382,11 @@ reset.forEach(btn => {
     statusGame = false;
 
   })
+})
+
+
+info.addEventListener('click', function () {
+  const rules = document.querySelector('.rules');
+  rules.classList.toggle('visible')
+
 })

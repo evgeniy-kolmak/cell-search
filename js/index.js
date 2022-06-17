@@ -202,117 +202,119 @@ const addSuperBonus = () => {
   })
 }
 
+const tableListener = e => {
+  if (values.includes(e.target.id)) {
+    e.target.style.backgroundColor = '#66CC66';
+    if (!doneValues.includes(e.target.id)) {
+      addTime.style.opacity = 1;
+      addTime.style.color = '#66CC66';
+      addTime.textContent = '+ 10 секунд'
+      setTimeout(() => {
+        addTime.style.opacity = 0;
+      }, 1000)
+      countTimer += 10000;
+      isFinish(e.target.id)
+    }
+  } else {
+    if (e.target.nodeName === 'TD') {
+      e.target.style.backgroundColor = '#FF6666';
+      if (!logs.includes(e.target.id)) {
+        addTime.style.opacity = 1;
+        addTime.style.color = '#FF6666';
+        addTime.textContent = '- 1 секунда'
+        setTimeout(() => {
+          addTime.style.opacity = 0;
+        }, 500)
+        countTimer -= 1000
+        logs.push(e.target.id)
+      }
+    } else if (e.target.nodeName === 'IMG') {
+      if (star.includes(e.target.parentNode.id)) {
+        e.target.style.opacity = 1;
+        e.target.parentNode.style.backgroundColor = '#7c2222';
+        if (!logs.includes(e.target.parentNode.id)) {
+          addTime.style.opacity = 1;
+          addTime.style.color = '#7c2222';
+          addTime.textContent = 'Звезда! +5 секунд'
+          setTimeout(() => {
+            addTime.style.opacity = 0;
+          }, 1000)
+          countTimer += 5000
+          logs.push(e.target.parentNode.id)
+        }
+      } else if (bomb.includes(e.target.parentNode.id)) {
+        e.target.style.opacity = 1;
+        e.target.parentNode.style.backgroundColor = 'orange';
+        if (!logs.includes(e.target.parentNode.id)) {
+          addTime.style.opacity = 1;
+          addTime.style.color = '#7c2222';
+          addTime.textContent = 'Упс! -8 секунд'
+          setTimeout(() => {
+            addTime.style.opacity = 0;
+          }, 1000)
+          countTimer -= 8000;
+          logs.push(e.target.parentNode.id);
+        }
+      } else if (luck.includes(e.target.parentNode.id)) {
+        e.target.style.opacity = 1;
+        e.target.parentNode.style.backgroundColor = 'purple';
+        if (!logs.includes(e.target.parentNode.id)) {
+          addTime.style.opacity = 1;
+          addTime.style.color = 'purple';
+          addTime.textContent = 'Ого, это большая удача!'
+          setTimeout(() => {
+            addTime.style.opacity = 0;
+          }, 2000)
+          logs.push(e.target.parentNode.id);
+          values.forEach(item => {
+            if (!doneValues.includes(item)) {
+              const cell = document.getElementById(`${item}`);
+              cell.style.transitionDuration = '.8s';
+              cell.style.backgroundColor = 'grey';
+              setTimeout(() => {
+                if (!doneValues.includes(item)) {
+                  cell.style.backgroundColor = null;
+                }
+              }, 3000)
+            }
+          })
+        }
+      } else {
+        e.target.style.opacity = 1;
+        e.target.parentNode.style.backgroundColor = 'black';
+        if (!logs.includes(e.target.parentNode.id)) {
+          addTime.style.opacity = 1;
+          addTime.style.color = 'black';
+          addTime.textContent = 'Сделка с дьяволом!'
+          setTimeout(() => {
+            addTime.style.opacity = 0;
+            countTimer += 30000;
+          }, 2000)
+          logs.push(e.target.parentNode.id);
+          column.forEach(cell => {
+            if (cell.id !== e.target.parentNode.id) {
+              cell.style.transitionDuration = '.8s';
+              cell.style.backgroundColor = null;
+              if (cell.firstChild) {
+                cell.firstChild.style.opacity = 0;
+                cell.firstChild.style.transitionDuration = '.8s';
+              }
+            }
+          })
+        }
+      }
+    }
+  }
+}
+
 
 // Начало игры
 const startGame = statusGame => {
   if (statusGame) {
-    table.addEventListener('click', function (e) {
-      if (values.includes(e.target.id)) {
-        e.target.style.backgroundColor = '#66CC66';
-        if (!doneValues.includes(e.target.id)) {
-          addTime.style.opacity = 1;
-          addTime.style.color = '#66CC66';
-          addTime.textContent = '+ 10 секунд'
-          setTimeout(() => {
-            addTime.style.opacity = 0;
-          }, 1000)
-          countTimer += 10000;
-          isFinish(e.target.id)
-        }
-      } else {
-        if (e.target.nodeName === 'TD') {
-          e.target.style.backgroundColor = '#FF6666';
-          if (!logs.includes(e.target.id)) {
-            addTime.style.opacity = 1;
-            addTime.style.color = '#FF6666';
-            addTime.textContent = '- 1 секунда'
-            setTimeout(() => {
-              addTime.style.opacity = 0;
-            }, 500)
-            countTimer -= 1000
-            logs.push(e.target.id)
-          }
-        } else if (e.target.nodeName === 'IMG') {
-          if (star.includes(e.target.parentNode.id)) {
-            e.target.style.opacity = 1;
-            e.target.parentNode.style.backgroundColor = '#7c2222';
-            if (!logs.includes(e.target.parentNode.id)) {
-              addTime.style.opacity = 1;
-              addTime.style.color = '#7c2222';
-              addTime.textContent = 'Звезда! +5 секунд'
-              setTimeout(() => {
-                addTime.style.opacity = 0;
-              }, 1000)
-              countTimer += 5000
-              logs.push(e.target.parentNode.id)
-            }
-          } else if (bomb.includes(e.target.parentNode.id)) {
-            e.target.style.opacity = 1;
-            e.target.parentNode.style.backgroundColor = 'orange';
-            if (!logs.includes(e.target.parentNode.id)) {
-              addTime.style.opacity = 1;
-              addTime.style.color = '#7c2222';
-              addTime.textContent = 'Упс! -8 секунд'
-              setTimeout(() => {
-                addTime.style.opacity = 0;
-              }, 1000)
-              countTimer -= 8000;
-              logs.push(e.target.parentNode.id);
-            }
-          } else if (luck.includes(e.target.parentNode.id)) {
-            e.target.style.opacity = 1;
-            e.target.parentNode.style.backgroundColor = 'purple';
-            if (!logs.includes(e.target.parentNode.id)) {
-              addTime.style.opacity = 1;
-              addTime.style.color = 'purple';
-              addTime.textContent = 'Ого, это большая удача!'
-              setTimeout(() => {
-                addTime.style.opacity = 0;
-              }, 2000)
-              logs.push(e.target.parentNode.id);
-              values.forEach(item => {
-                if (!doneValues.includes(item)) {
-                  const cell = document.getElementById(`${item}`);
-                  cell.style.transitionDuration = '.8s';
-                  cell.style.backgroundColor = 'grey';
-                  setTimeout(() => {
-                    if (!doneValues.includes(item)) {
-                      cell.style.backgroundColor = null;
-                    }
-                  }, 3000)
-                }
-              })
-            }
-          } else {
-            e.target.style.opacity = 1;
-            e.target.parentNode.style.backgroundColor = 'black';
-            if (!logs.includes(e.target.parentNode.id)) {
-              addTime.style.opacity = 1;
-              addTime.style.color = 'black';
-              addTime.textContent = 'Сделка с дьяволом!'
-              setTimeout(() => {
-                addTime.style.opacity = 0;
-                countTimer += 30000;
-              }, 2000)
-              logs.push(e.target.parentNode.id);
-              column.forEach(cell => {
-                if (cell.id !== e.target.parentNode.id) {
-                  cell.style.transitionDuration = '.8s';
-                  cell.style.backgroundColor = null;
-                  if (cell.firstChild) {
-                    cell.firstChild.style.opacity = 0;
-                    cell.firstChild.style.transitionDuration = '.8s';
-                  }
-                }
-              })
-            }
-          }
-        }
-      }
-    })
+    table.addEventListener('click', tableListener);
 
   } else {
-    return statusGame;
+    table.removeEventListener('click', tableListener);
   }
 }
 
@@ -380,6 +382,7 @@ reset.forEach(btn => {
     modal.style.display = 'none';
     timer.textContent = 'Найдите все 10 плиток'
     statusGame = false;
+    startGame(statusGame);
 
   })
 })

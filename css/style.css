@@ -74,23 +74,23 @@ td:hover {
   text-decoration: none;
   color: #385898;
   background-color: #d3e5f8;
-  cursor: pointer;
-  user-select: none;
-  appearance: none;
-  touch-action: manipulation;
-
+  transition: all .4s ease 0s;
 }
 
-
-.btn:focus-visible {
-  box-shadow: 0 0 0 2px #666;
+.btn:disabled {
+  background-color: #d3e5f8;
+  opacity: .7;
+  color: #38589886;
+  transition: all .4s ease 0s;
 }
 
-.btn:hover {
+.btn:not([disabled]):hover {
   background-color: #DBE7F2;
+  cursor: pointer;
+
 }
 
-.btn:active {
+.btn:not([disabled]):active {
   transform: scale(0.96);
 }
 

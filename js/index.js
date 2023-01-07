@@ -10,6 +10,7 @@ const addTime = document.querySelector('.add-time');
 const record = document.querySelector('.record');
 const timer = document.querySelector('.timer');
 const info = document.querySelector('.img-info');
+const rules = document.querySelector('.rules');
 let values;
 let doneValues;
 let logs;
@@ -74,6 +75,12 @@ const isFinish = value => {
     }
   }
 }
+
+// Правила
+
+function showRules() {
+  rules.classList.toggle('visible')
+};
 
 // Рекорд
 const isRecord = count => {
@@ -307,20 +314,26 @@ const tableListener = e => {
   }
 }
 
-
 // Начало игры
 const startGame = statusGame => {
   if (statusGame) {
     table.addEventListener('click', tableListener);
-
   } else {
     table.removeEventListener('click', tableListener);
+    info.addEventListener('click', showRules);
   }
 }
 
 
 start.addEventListener('click', function (e) {
+  if (rules.classList.contains('visible')) {
+    rules.classList.remove('visible');
+  }
+
+  info.removeEventListener('click', showRules);
   statusGame = true;
+  reset[0].disabled = false;
+  start.disabled = true;
   startGame(statusGame);
   e.preventDefault();
 
@@ -376,6 +389,8 @@ reset.forEach(btn => {
       skull = null;
 
     })
+    start.disabled = false;
+
 
     clearInterval(timerId)
     countTimer = 60000;
@@ -388,8 +403,10 @@ reset.forEach(btn => {
 })
 
 
-info.addEventListener('click', function () {
-  const rules = document.querySelector('.rules');
-  rules.classList.toggle('visible')
 
-})
+
+
+
+
+
+

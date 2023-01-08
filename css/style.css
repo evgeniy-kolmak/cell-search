@@ -1,8 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: #ECE9E6;
-  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
-  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   font-family: 'Roboto slab', sans-serif;
+  background: #ECE9E6;
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   margin: 0;
   padding: 0;
 }
@@ -12,10 +15,10 @@ img {
 }
 
 .container {
-  position: relative;
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  max-width: 1180px;
+  margin: auto;
 }
 
 table {
@@ -39,17 +42,12 @@ td {
   cursor: pointer;
   transition: all .3s ease 0s;
   text-align: center;
-  font-size: 18px;
-  font-weight: 600;
   color: #fff;
 
 
 }
 
-td:hover {
-  background-color: #cccc;
-  transition: all .3s ease 0s;
-}
+
 
 .wrapper-button {
   display: flex;
@@ -58,11 +56,16 @@ td:hover {
   width: 400px;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
 .btn {
   font-family: 'Roboto slab', sans-serif;
   width: 170px;
-  display: inline-block;
-  box-sizing: border-box;
   padding: 0 30px;
   outline: none;
   border: none;
@@ -71,7 +74,6 @@ td:hover {
   line-height: 40px;
   font-size: 17px;
   font-weight: 600;
-  text-decoration: none;
   color: #385898;
   background-color: #d3e5f8;
   transition: all .4s ease 0s;
@@ -84,11 +86,7 @@ td:hover {
   transition: all .4s ease 0s;
 }
 
-.btn:not([disabled]):hover {
-  background-color: #DBE7F2;
-  cursor: pointer;
 
-}
 
 .btn:not([disabled]):active {
   transform: scale(0.96);
@@ -97,7 +95,6 @@ td:hover {
 
 .timer {
   line-height: 40px;
-  font-size: 17px;
   font-weight: 600;
   font-size: 36px;
   padding: 30px 0 15px 0;
@@ -140,8 +137,6 @@ td:hover {
   top: 0;
   left: 0;
   z-index: 1;
-  background: #232526;
-  background: -webkit-linear-gradient(to right, #414345, #232526);
   background: linear-gradient(to right, #414345, #232526);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.47);
   width: 400px;
@@ -191,12 +186,10 @@ td:hover {
 
 .rules {
   position: absolute;
-  bottom: 270%;
-  left: 0;
+  bottom: 95px;
   width: 400px;
   height: 420px;
   background: #232526;
-  background: -webkit-linear-gradient(to right, #363738, #232526);
   background: linear-gradient(to right, #363738, #232526);
   border-radius: 15px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.47);
@@ -221,7 +214,6 @@ td:hover {
   border-top: 30px solid #363738;
   content: '';
   transform: rotate(135deg);
-  z-index: -1;
 
 }
 
@@ -289,4 +281,184 @@ td:hover {
 .list-img {
   width: 28px;
   height: 28px;
+}
+
+@media (max-width: 1150px) {
+  .rules {
+    right: -20px;
+    bottom: 110px;
+  }
+
+  .rules::before {
+    bottom: -29px;
+    left: 330px;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid #232526;
+    transform: rotate(45deg);
+
+  }
+}
+
+@media (max-width: 475px) {
+  .container {
+    max-width: 85%;
+  }
+
+  table {
+    width: 320px;
+    height: 320px;
+    border: 2px solid #000;
+    margin-bottom: 10px;
+  }
+
+  td {
+    width: 26px;
+    height: 26px;
+  }
+
+  .timer {
+    text-align: center;
+    font-size: 27px;
+    padding: 20px 0 10px 0;
+  }
+
+  .add-time {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .record {
+    font-size: 18px;
+  }
+
+  .wrapper-button {
+    width: 320px;
+  }
+
+  .btn {
+    font-family: 'Roboto slab', sans-serif;
+    width: 120px;
+    height: 35px;
+    line-height: 34px;
+    font-size: 15px;
+  }
+
+  .img-info {
+    width: 27px;
+    height: 27px;
+  }
+
+  .rules {
+    width: 320px;
+    height: 380px;
+    bottom: 70px;
+    border-radius: 10px;
+  }
+
+  .rules::before {
+    left: 270px;
+    bottom: -25px;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid #232526;
+  }
+
+  .rules-title {
+    margin-bottom: 7px;
+    font-size: 18px;
+  }
+
+  .rules-subtitle,
+  .rules-description {
+    font-size: 13px;
+  }
+
+  .cell-title {
+    margin-bottom: 10px;
+  }
+
+  .cell-items {
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  .cell-item {
+    margin-bottom: 7px;
+  }
+
+  .cell-description {
+    font-size: 11px;
+  }
+
+  .list-img {
+    width: 27px;
+    height: 27px;
+  }
+
+  .list-marker {
+    min-width: 27px;
+    min-height: 27px;
+  }
+
+  .red {
+    width: 27px;
+    height: 27px;
+  }
+
+  .modal-content {
+    padding: 15px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #414345, #232526);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.47);
+    width: 300px;
+    height: 200px;
+  }
+
+  .cup,
+  .time {
+    width: 75px;
+    height: 75px;
+  }
+
+  .content {
+    font-size: 18px;
+  }
+}
+
+@media(max-width: 360px) {
+  .table {
+    width: 310px;
+    height: 310px;
+  }
+
+  .wrapper-button {
+    width: 310px;
+  }
+
+  .timer {
+    font-size: 18px;
+  }
+
+  .rules {
+    width: 310px;
+    height: 400px;
+    bottom: 80px;
+    right: -8px;
+  }
+}
+
+
+@media (any-hover: hover) {
+  td:hover {
+    background-color: #cccc;
+    transition: all .3s ease 0s;
+  }
+
+  .btn:not([disabled]):hover {
+    background-color: #DBE7F2;
+    cursor: pointer;
+
+  }
+
 }

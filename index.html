@@ -16,186 +16,193 @@
 
 <body>
   <div class="container">
-    <div class="timer">Найдите все 10 плиток</div>
-    <label for="timer" class="add-time">&#160</label>
-    <table>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-    <label class="record"></label>
-    <div class="wrapper-button">
-      <button class="btn start">Играть </button>
-      <button class="btn reset">Заново</button>
-      <div class="info">
-        <img class="img-info" src="img/info.png" alt="info">
-        <div class="rules visible">
-          <h2 class="rules-title">Правила игры</h2>
-          <span class="rules-subtitle">Найдите 10 плиток за отведенное время.</span>
-          <div class="rules-description">Всего 1 минута, иначе игра будет закончена.</div>
-          <ul class="cell-items">
-            <span class="cell-title">Виды плиток:</span>
-            <li class="cell-item">
-              <span class="list-marker green"></span>
-              <span class="cell-description"><b>Нужная плитка!</b> Прибавляет 10 секунд к текущему времени и приближает
-                к победе.</span>
-            </li>
-            <li class="cell-item">
-              <span class="list-marker red"></span>
-              <span class="cell-description"><b>Ненужная плитка!</b> Бесполезная плитка, отнимает 1 секунду от текущего
-                времени.</span>
-            </li>
-            <li class="cell-item">
-              <img src="img/star.png" alt="star" class="list-img">
-              <span class="cell-description"><b>Звезда!</b> Добавляет к текущему времени 5 секунд. <b>(От 0 до 5 штук на
-                  поле)</b></span>
-            </li>
-            <li class="cell-item">
-            <li class="cell-item">
-              <img src="img/bomb.png" alt="bomb" class="list-img">
-              <span class="cell-description"><b>Упс, бомба! </b>Отнимает 8 секунд от текущего времени.<b>(От 0 до 4 штук
-                  на поле)</b></span>
-            </li>
-            </li>
-            <li class="cell-item">
-            <li class="cell-item">
-              <img src="img/luck.png" alt="luck" class="list-img">
-              <span class="cell-description"><b>Клевер. </b>Открывает спрятанные (зеленые) плитки на 3 секунды. <b>(Один
-                  на поле).</b></span>
-            </li>
-            </li>
-            <li class="cell-item">
-            <li class="cell-item">
-              <img src="img/skull.png" alt="skull" class="list-img">
-              <span class="cell-description"><b>Сделка с дьяволом!</b> Скрывает все плитки на поле, но добовляет 30
-                секунд к
-                текущему времени.</span>
-            </li>
-            </li>
-          </ul>
+    <div class="app">
+      <div class="timer">Найдите все 10 плиток</div>
+      <label for="timer" class="add-time">&#160</label>
+      <table>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <label class="record"></label>
+      <div class="wrapper-button">
+        <button class="btn start">Играть</button>
+        <button class="btn reset">Заново</button>
+        <div class="info">
+          <img class="img-info" src="img/info.png" alt="info">
+          <div class="rules visible">
+            <h2 class="rules-title">Правила игры</h2>
+            <span class="rules-subtitle">Найдите 10 плиток за отведенное время.</span>
+            <div class="rules-description">Всего 1 минута, иначе игра будет закончена.</div>
+            <ul class="cell-items">
+              <span class="cell-title">Виды плиток:</span>
+              <li class="cell-item">
+                <span class="list-marker green"></span>
+                <span class="cell-description"><b>Нужная плитка!</b> Прибавляет 10 секунд к текущему времени и
+                  приближает
+                  к победе.</span>
+              </li>
+              <li class="cell-item">
+                <span class="list-marker red"></span>
+                <span class="cell-description"><b>Ненужная плитка!</b> Бесполезная плитка, отнимает 1 секунду от
+                  текущего
+                  времени.</span>
+              </li>
+              <li class="cell-item">
+                <img src="img/star.png" alt="star" class="list-img">
+                <span class="cell-description"><b>Звезда!</b> Добавляет к текущему времени 5 секунд. <b>(От 0 до 5 штук
+                    на
+                    поле)</b></span>
+              </li>
+              <li class="cell-item">
+              <li class="cell-item">
+                <img src="img/bomb.png" alt="bomb" class="list-img">
+                <span class="cell-description"><b>Упс, бомба! </b>Отнимает 8 секунд от текущего времени. <b>(От 0 до 4
+                    штук
+                    на поле)</b></span>
+              </li>
+              </li>
+              <li class="cell-item">
+              <li class="cell-item">
+                <img src="img/luck.png" alt="luck" class="list-img">
+                <span class="cell-description"><b>Клевер. </b>Открывает спрятанные (зеленые) плитки на 3 секунды.
+                  <b>(Один
+                    на поле).</b></span>
+              </li>
+              </li>
+              <li class="cell-item">
+              <li class="cell-item">
+                <img src="img/skull.png" alt="skull" class="list-img">
+                <span class="cell-description"><b>Сделка с дьяволом!</b> Скрывает все плитки на поле, но добовляет 30
+                  секунд к
+                  текущему времени.</span>
+              </li>
+              </li>
+            </ul>
+          </div>
+          <!-- /.rules -->
         </div>
-        <!-- /.raules -->
+        <!-- /.info -->
       </div>
-      <!-- /.info -->
     </div>
-  </div>
 
+  </div>
   <!-- /.container -->
   <div class="modal">
     <div class="modal-overlay"></div>
@@ -210,7 +217,6 @@
     <!-- /.modal-content -->
   </div>
 
-  <!-- /.rules -->
   <script src="js/index.js"></script>
 </body>
 

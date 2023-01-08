@@ -29,11 +29,11 @@ let statusGame;
 
 // Добовление ID к ячейкам таблицы
 const addIdElements = () => {
-  Array.from(row).map((element, index) => element.id = index)
+  Array.from(row).map((element, index) => element.id = index);
   columnInRow.map((items, i) => {
     items.map((item, index) => item.id = `${i}${index}`)
-  })
-}
+  });
+};
 
 addIdElements();
 
@@ -49,7 +49,7 @@ const randomCell = count => {
       } else if (value.length < 2) {
         result.push(`0${value}`)
       } else {
-        result.push(value)
+        result.push(value);
       }
     } else {
       i--;
@@ -57,18 +57,18 @@ const randomCell = count => {
     }
   }
 
-  return result
+  return result;
 }
 
 // Финиш
 const isFinish = value => {
   if (!doneValues.includes(value)) {
-    doneValues.push(value)
+    doneValues.push(value);
     if (doneValues.length === 10) {
       let count = countTimer / interval;
-      clearInterval(timerId)
-      modal.style.display = 'block'
-      timer.textContent = 'Вы победили!'
+      clearInterval(timerId);
+      modal.style.display = 'block';
+      timer.textContent = 'Вы победили!';
       isRecord(count);
       content.textContent = `Ваше время ${count} секунд(ы)`;
       document.querySelector('.cup').style.display = 'block';
@@ -79,7 +79,7 @@ const isFinish = value => {
 // Правила
 
 function showRules() {
-  rules.classList.toggle('visible')
+  rules.classList.toggle('visible');
 };
 
 // Рекорд
@@ -93,7 +93,7 @@ const isRecord = count => {
 }
 
 const showRecord = () => {
-  if (localStorage.timeCount === undefined) {
+  if (!localStorage.timeCount) {
     localStorage.timeCount = 0;
   }
   record.textContent = `Ваш рекорд ${localStorage.timeCount} секунд(ы)`;
@@ -130,7 +130,7 @@ const addBonus = coll => {
       } else if (value.length < 2) {
         bonusValues.push(`0${value}`)
       } else {
-        bonusValues.push(value)
+        bonusValues.push(value);
       }
     }
   }
@@ -154,23 +154,28 @@ const addSuperBonus = () => {
     skull.forEach(el => {
       const element = document.getElementById(`${el}`);
       const img = document.createElement('img');
-      img.style.verticalAlign = 'bottom'
+      img.style.verticalAlign = 'bottom';
       img.style.opacity = 0;
-      img.style.width = '32px';
-      img.style.height = '32px';
+      if (window.matchMedia("(max-width: 475px)").matches) {
+        img.style.width = '27px';
+        img.style.height = '27px';
+      } else {
+        img.style.width = '32px';
+        img.style.height = '32px';
+      }
       img.src = './img/skull.png';
-      element.append(img)
+      element.append(img);
 
     })
 
   }
 
   for (let i = countBonusValues[0]; i < bonusValues.length - count; i++) {
-    bomb.push(bonusValues[i])
+    bomb.push(bonusValues[i]);
   }
 
   for (let i = 0; i < countBonusValues[0]; i++) {
-    star.push(bonusValues[i])
+    star.push(bonusValues[i]);
   }
 
 
@@ -179,10 +184,15 @@ const addSuperBonus = () => {
     const img = document.createElement('img');
     img.style.verticalAlign = 'bottom';
     img.style.opacity = 0;
-    img.style.width = '32px';
-    img.style.height = '32px';
+    if (window.matchMedia("(max-width: 475px)").matches) {
+      img.style.width = '27px';
+      img.style.height = '27px';
+    } else {
+      img.style.width = '32px';
+      img.style.height = '32px';
+    }
     img.src = './img/star.png';
-    element.append(img)
+    element.append(img);
   })
 
   bomb.forEach(el => {
@@ -190,8 +200,13 @@ const addSuperBonus = () => {
     const img = document.createElement('img');
     img.style.verticalAlign = 'bottom';
     img.style.opacity = 0;
-    img.style.width = '32px';
-    img.style.height = '32px';
+    if (window.matchMedia("(max-width: 475px)").matches) {
+      img.style.width = '27px';
+      img.style.height = '27px';
+    } else {
+      img.style.width = '32px';
+      img.style.height = '32px';
+    }
     img.src = './img/bomb.png';
     element.append(img);
   })
@@ -199,10 +214,15 @@ const addSuperBonus = () => {
   luck.forEach(el => {
     const element = document.getElementById(`${el}`);
     const img = document.createElement('img');
-    img.style.verticalAlign = 'bottom'
+    img.style.verticalAlign = 'bottom';
     img.style.opacity = 0;
-    img.style.width = '32px';
-    img.style.height = '32px';
+    if (window.matchMedia("(max-width: 475px)").matches) {
+      img.style.width = '27px';
+      img.style.height = '27px';
+    } else {
+      img.style.width = '32px';
+      img.style.height = '32px';
+    }
     img.src = './img/luck.png';
     element.append(img)
 
@@ -213,14 +233,14 @@ const tableListener = e => {
   if (values.includes(e.target.id)) {
     e.target.style.backgroundColor = '#66CC66';
     if (!doneValues.includes(e.target.id)) {
-      addTime.style.opacity = 1;
+      addTime.style.opacity = 0;
       addTime.style.color = '#66CC66';
       addTime.textContent = '+ 10 секунд'
       setTimeout(() => {
         addTime.style.opacity = 0;
-      }, 1000)
+      }, 1000);
       countTimer += 10000;
-      isFinish(e.target.id)
+      isFinish(e.target.id);
     }
   } else {
     if (e.target.nodeName === 'TD') {
@@ -228,11 +248,11 @@ const tableListener = e => {
       if (!logs.includes(e.target.id)) {
         addTime.style.opacity = 1;
         addTime.style.color = '#FF6666';
-        addTime.textContent = '- 1 секунда'
+        addTime.textContent = '- 1 секунда';
         setTimeout(() => {
           addTime.style.opacity = 0;
         }, 500)
-        countTimer -= 1000
+        countTimer -= 1000;
         logs.push(e.target.id)
       }
     } else if (e.target.nodeName === 'IMG') {
@@ -242,12 +262,12 @@ const tableListener = e => {
         if (!logs.includes(e.target.parentNode.id)) {
           addTime.style.opacity = 1;
           addTime.style.color = '#7c2222';
-          addTime.textContent = 'Звезда! +5 секунд'
+          addTime.textContent = 'Звезда! +5 секунд';
           setTimeout(() => {
             addTime.style.opacity = 0;
-          }, 1000)
-          countTimer += 5000
-          logs.push(e.target.parentNode.id)
+          }, 1000);
+          countTimer += 5000;
+          logs.push(e.target.parentNode.id);
         }
       } else if (bomb.includes(e.target.parentNode.id)) {
         e.target.style.opacity = 1;
@@ -255,7 +275,7 @@ const tableListener = e => {
         if (!logs.includes(e.target.parentNode.id)) {
           addTime.style.opacity = 1;
           addTime.style.color = '#7c2222';
-          addTime.textContent = 'Упс! -8 секунд'
+          addTime.textContent = 'Упс! -8 секунд';
           setTimeout(() => {
             addTime.style.opacity = 0;
           }, 1000)
@@ -268,7 +288,7 @@ const tableListener = e => {
         if (!logs.includes(e.target.parentNode.id)) {
           addTime.style.opacity = 1;
           addTime.style.color = 'purple';
-          addTime.textContent = 'Ого, это большая удача!'
+          addTime.textContent = 'Ого, это большая удача!';
           setTimeout(() => {
             addTime.style.opacity = 0;
           }, 2000)
@@ -282,9 +302,9 @@ const tableListener = e => {
                 if (!doneValues.includes(item)) {
                   cell.style.backgroundColor = null;
                 }
-              }, 3000)
+              }, 3000);
             }
-          })
+          });
         }
       } else {
         e.target.style.opacity = 1;
@@ -307,7 +327,7 @@ const tableListener = e => {
                 cell.firstChild.style.transitionDuration = '.8s';
               }
             }
-          })
+          });
         }
       }
     }
@@ -337,8 +357,8 @@ start.addEventListener('click', function (e) {
   startGame(statusGame);
   e.preventDefault();
 
-  table.style.backgroundColor = '#fff'
-  table.style.transitionDuration = '1s'
+  table.style.backgroundColor = '#fff';
+  table.style.transitionDuration = '1s';
 
   values = randomCell(10);
 
@@ -353,10 +373,10 @@ start.addEventListener('click', function (e) {
     timer.textContent = `${countTimer / interval
       } секунд`;
     if (countTimer < interval) {
-      modal.style.display = 'block'
+      modal.style.display = 'block';
       content.textContent = `Увы, время вышло!`;
       document.querySelector('.time').style.display = 'block';
-      clearInterval(timerId)
+      clearInterval(timerId);
     }
   }, interval);
 
@@ -365,7 +385,7 @@ start.addEventListener('click', function (e) {
 
   addSuperBonus();
 
-  document.querySelectorAll('.content-promo').forEach(item => item.style.display = 'none')
+  document.querySelectorAll('.content-promo').forEach(item => item.style.display = 'none');
 })
 
 
@@ -373,7 +393,7 @@ start.addEventListener('click', function (e) {
 reset.forEach(btn => {
   btn.addEventListener('click', function (e) {
     e.preventDefault();
-    clearInterval(timerId)
+    clearInterval(timerId);
     table.style.backgroundColor = '#000';
     column.forEach(el => {
       el.style.backgroundColor = null;
@@ -387,20 +407,19 @@ reset.forEach(btn => {
       bomb = [];
       luck = null;
       skull = null;
-
-    })
+    });
     start.disabled = false;
 
 
-    clearInterval(timerId)
+    clearInterval(timerId);
     countTimer = 60000;
     modal.style.display = 'none';
-    timer.textContent = 'Найдите все 10 плиток'
+    timer.textContent = 'Найдите все 10 плиток';
     statusGame = false;
     startGame(statusGame);
 
-  })
-})
+  });
+});
 
 
 

@@ -41,7 +41,6 @@ td {
   padding: 0;
   cursor: pointer;
   transition: all .3s ease 0s;
-  text-align: center;
   color: #fff;
 
 
@@ -312,8 +311,8 @@ td {
   }
 
   td {
-    width: 26px;
-    height: 26px;
+    width: 29px;
+    height: 29px;
   }
 
   .timer {

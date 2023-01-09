@@ -77,7 +77,6 @@ const isFinish = value => {
 }
 
 // Правила
-
 function showRules() {
   rules.classList.toggle('visible');
 };
@@ -157,8 +156,8 @@ const addSuperBonus = () => {
       img.style.verticalAlign = 'bottom';
       img.style.opacity = 0;
       if (window.matchMedia("(max-width: 475px)").matches) {
-        img.style.width = '27px';
-        img.style.height = '27px';
+        img.style.width = '26px';
+        img.style.height = '26px';
       } else {
         img.style.width = '32px';
         img.style.height = '32px';
@@ -166,7 +165,7 @@ const addSuperBonus = () => {
       img.src = './img/skull.png';
       element.append(img);
 
-    })
+    });
 
   }
 
@@ -185,15 +184,15 @@ const addSuperBonus = () => {
     img.style.verticalAlign = 'bottom';
     img.style.opacity = 0;
     if (window.matchMedia("(max-width: 475px)").matches) {
-      img.style.width = '27px';
-      img.style.height = '27px';
+      img.style.width = '26px';
+      img.style.height = '26px';
     } else {
       img.style.width = '32px';
       img.style.height = '32px';
     }
     img.src = './img/star.png';
     element.append(img);
-  })
+  });
 
   bomb.forEach(el => {
     const element = document.getElementById(`${el}`);
@@ -201,15 +200,15 @@ const addSuperBonus = () => {
     img.style.verticalAlign = 'bottom';
     img.style.opacity = 0;
     if (window.matchMedia("(max-width: 475px)").matches) {
-      img.style.width = '27px';
-      img.style.height = '27px';
+      img.style.width = '26px';
+      img.style.height = '26px';
     } else {
       img.style.width = '32px';
       img.style.height = '32px';
     }
     img.src = './img/bomb.png';
     element.append(img);
-  })
+  });
 
   luck.forEach(el => {
     const element = document.getElementById(`${el}`);
@@ -217,16 +216,16 @@ const addSuperBonus = () => {
     img.style.verticalAlign = 'bottom';
     img.style.opacity = 0;
     if (window.matchMedia("(max-width: 475px)").matches) {
-      img.style.width = '27px';
-      img.style.height = '27px';
+      img.style.width = '26px';
+      img.style.height = '26px';
     } else {
       img.style.width = '32px';
       img.style.height = '32px';
     }
     img.src = './img/luck.png';
-    element.append(img)
+    element.append(img);
 
-  })
+  });
 }
 
 const tableListener = e => {
@@ -389,7 +388,6 @@ start.addEventListener('click', function (e) {
 })
 
 
-
 reset.forEach(btn => {
   btn.addEventListener('click', function (e) {
     e.preventDefault();
@@ -408,8 +406,8 @@ reset.forEach(btn => {
       luck = null;
       skull = null;
     });
-    start.disabled = false;
 
+    start.disabled = false;
 
     clearInterval(timerId);
     countTimer = 60000;
